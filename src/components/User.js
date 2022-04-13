@@ -1,13 +1,17 @@
-const User = (props) => { // rsc>TAB for fast built
-    // props is all receiving data
-    const {value} = props;
-    const {id, name, username:nickname, email} = value;
-    // destructuring props data and renaming of field
+import {userService} from "../services/user_service";
+
+const User = ({user}) => {
+    const {id, name, email} = user;
+
+    const del = (id) => {   // Delete an User from API
+        userService.deleteById(id).then(value => console.log(value));
+    }   // After CRUD operation response can be optional
 
     return (
         <div>
-            {id} -- {name} -- {nickname} -- {email}
-        </div>
+            {id} -- {name} -- {email}
+            <button onClick={() => del(id)}>delete</button>
+        </div>  // onClick is event, its needs call-back func
     );
 };
 
