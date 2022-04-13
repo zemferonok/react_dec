@@ -3,17 +3,17 @@ import {useEffect, useState} from "react";
 import User from "./User"
 import {userService} from "../services/user_service";
 
-const Users = () => {
+const Users = ({setKing}) => {
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {   // Use userService instead of Fetch
+    useEffect(() => {
         userService.getAll().then(value => setUsers([...value]));
-    }, [])  // ... is SpreadOperator, its put all elements of value
+    }, [])
 
     return (
         <div>
-            {users.map(user => <User key={user.id} user={user}/>)}
-        </div>
+            {users.map(user => <User key={user.id} user={user} setKing={setKing}/>)}
+        </div>  // setKing={setKing} send setter for King data
     );
 };
 

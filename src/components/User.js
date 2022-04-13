@@ -1,17 +1,16 @@
-import {userService} from "../services/user_service";
+const User = ({user, setKing}) => {
+    const {id, name} = user;
 
-const User = ({user}) => {
-    const {id, name, email} = user;
-
-    const del = (id) => {   // Delete an User from API
-        userService.deleteById(id).then(value => console.log(value));
-    }   // After CRUD operation response can be optional
+    const click = () => {
+        console.log('New King is ', user);
+        setKing(user); // Use setter setKing
+    }   // Sending data for King
 
     return (
         <div>
-            {id} -- {name} -- {email}
-            <button onClick={() => del(id)}>delete</button>
-        </div>  // onClick is event, its needs call-back func
+            {id} -- {name}
+            <button onClick={() => click()}>Make King</button>
+        </div>  // Instead of 'click()' can put 'setKing(user)'
     );
 };
 
