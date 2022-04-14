@@ -3,24 +3,23 @@ import React, {useEffect, useState} from 'react';
 import {carService} from "../../services/car_service";
 import {Car} from "../Car/Car";
 
-const Cars = ({newCar, setCarForUpdate}) => {
+const Cars = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        carService.getAll().then(value => setCars(value))
-    }, [])  // Also can yse for re-render
+        carService.getAll().then(value => setCars([...value]));
+        // carService.getAll().then(value => setCars(prevState => [...prevState, value]));
+    }, [])
 
-    useEffect(() => {
-        if (newCar) {   // Check for NULL data
-            // setCars([...cars, newCar]); // The same
-            setCars(prevState => [...prevState, newCar]);
-        }
-    }, [newCar])    // Use DEPS for re-rending page
+    const click = (array) => {
+      array.map(value => carService.deleteById(value.id))
+    }
 
     return (
         <div>
             Cars
-            {cars.map(car => <Car key={car.id} car={car} setCarForUpdate={setCarForUpdate}/>)}
+            <button onClick={() => click(cars)}>Dell All</button>
+            {cars.map(car => <Car key={car.id} car={car}/>)}
         </div>
     );
 };
