@@ -11,8 +11,9 @@ const Cars = ({updater}) => {
         // carService.getAll().then(value => setCars(prevState => [...prevState, value]));
     }, [updater.update])
 
-    const dellAll = (array) => {    //TODO how to update page after deleting all cars?
-        array.map(value => carService.deleteById(value.id));
+    const dellAll = async (array) => {
+        await Promise.all(array.map(value => carService.deleteById(value.id)));
+        carService.getAll().then(value => setCars([...value]));
     }
 
     return (

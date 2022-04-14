@@ -32,7 +32,8 @@ const CarForm = ({updater}) => {
             <label>Prise: <input type="text" {...register('price', {valueAsNumber: true})}/></label>
             <label>Year: <input type="text" {...register('year', {valueAsNumber: true})}/></label>
             <button>send</button>
-            <a href="#" onClick={() => someSet()}>setValue</a>
+            {/*<a href="#" onClick={() => someSet()}>setValue</a>*/}
+            <button onClick={() => someSet()}>setValue</button>
             {responseError && <p>{JSON.stringify(responseError)}</p>}
         </form>
     );
