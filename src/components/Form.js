@@ -5,8 +5,13 @@ const Form = () => {
     // register - has a many base fields
 
     const mySubmit = (data) => {
-        console.log(data)       // All data from form
-        reset()                 // Clear all fields of Form
+        try {               // Working if it has no error
+            console.log(data)       // All data from form
+            // SEND DATA TO SERVER...
+            reset()                 // Clear all fields of Form
+        } catch (error) {   // Working if it has error
+            console.log(error.response.data)
+        }
     }
 
     const someSet = () => {
@@ -18,7 +23,8 @@ const Form = () => {
         <form onSubmit={handleSubmit(mySubmit)}>  {/* Make prevent default and some more */}
             <label>Name: <input type="text" {...register('name')}/></label>
             <label>Age: <input type="text" {...register('age', {valueAsNumber: true})}/></label>
-            <button>Submit</button>     {/* As default all Form's input data is string */}
+            <button>Submit</button>
+            {/* As default all Form's input data is string */}
             <a href="#" onClick={someSet}>setValue</a>
         </form>
     );
