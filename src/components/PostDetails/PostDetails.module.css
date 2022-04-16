@@ -1,0 +1,10 @@
+.header{
+    background-color: lightblue;
+    min-height: 250px;
+    padding: 50px;
+}
+
+.header div:hover{
+    color: green;
+    font-size: 20px;
+}
