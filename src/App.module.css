@@ -1,0 +1,7 @@
+.flex {
+    display: flex;
+}
+
+.border {
+    border: solid 20px lightpink;
+}
