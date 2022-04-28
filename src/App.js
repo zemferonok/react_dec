@@ -9,14 +9,14 @@ const App = () => {
     return (
         <BrowserRouter> {/* Must wrap all APP component, usually use in src/index.js */}
             <Routes>    {/* Contain ROUTE elements */}
-                {/* Every open ROUTE must have in its element <Outlet/> */}
+                {/* Every opened ROUTE must have into own element <Outlet/> */}
                 <Route path={'/'} element={<MainLayout/>}>  {/* Root path of url */}
                     <Route path={'home'} element={<HomePage/>}/>    {/* The closed ROUTE */}
                     <Route path={'posts'} element={<PostsPage/>}>   {/* The opened ROUTE */}
                         <Route path={':id'} element={<SinglePostPage/>}/> {/* :{key} is any data */}
-                    </Route>    {/* All url path for SinglePostPage is '.../home/{id}' */}
-                    <Route path={'*'} element={<NotFoundPage/>}/>   {/* For any not using url */}
-                    <Route index element={<Navigate to={'home'}/>}/>    {/* Default loading */}
+                    </Route>    {/* All path for url SinglePostPage is '.../posts/{id}' */}
+                    <Route path={'*'} element={<NotFoundPage/>}/>   {/* For any not decelerated url */}
+                    <Route index element={<Navigate to={'home'}/>}/>    {/* Default page for load */}
                 </Route>
             </Routes>
         </BrowserRouter>

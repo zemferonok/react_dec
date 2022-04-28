@@ -11,8 +11,8 @@ const Post = ({post}) => {
             {id} -- {title.slice(0, 30)}
 
             {/*<button onClick={() => navigate(id.toString())}>Details</button>*/}
-            {/* Bad variant for button navigate. Better use Link */}
-            {/* For good button navigate can put it into Link*/}
+            {/* Bad variant because of NAVIGATE. Better use Link */}
+            {/* For good variant button can be putted into Link*/}
 
             <Link to={id.toString()} state={post}>Details</Link>
             {/* STATE can send some data when Link is clicked*/}
